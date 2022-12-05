@@ -2,16 +2,10 @@ import json
 import re
 from time import sleep
 
-import chromedriver_autoinstaller
 import cloudscraper
 import requests
 from bs4 import BeautifulSoup
 from lk21 import Bypass
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.ui import WebDriverWait
 
 from bot.config import *
 from bot.helpers.functions import api_checker

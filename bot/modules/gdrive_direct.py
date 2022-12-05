@@ -1,16 +1,8 @@
 import base64
-import os
 import re
-from time import sleep
 from urllib.parse import parse_qs, urlparse
 
-import chromedriver_autoinstaller
 from lxml import etree
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.ui import WebDriverWait
 
 from bot.config import *
 
