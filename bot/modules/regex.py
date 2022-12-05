@@ -55,10 +55,6 @@ def is_sharer_link(url: str):
     return bool(url)
 
 
-def is_drivehubs_link(url: str):
-    return "drivehubs." in url
-
-
 def is_artstation_link(url: str):
     url = re.match(r"artstation\.com/(?:artwork|projects)/([0-9a-zA-Z]+)", url)
     return bool(url)

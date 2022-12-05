@@ -11,7 +11,6 @@ from bot.helpers.decorators import user_commands
 from bot.helpers.functions import forcesub, get_readable_time
 from bot.logging import LOGGER
 from bot.modules.bypasser import htpmovies, privatemoviez
-from bot.modules.gdrive_direct import pahe
 from bot.modules.lists import *
 from bot.modules.pasting import telegraph_paste
 from bot.modules.regex import *
@@ -226,15 +225,6 @@ async def scrape(client, message: Message):
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
         await msg.edit(text=a)
         des_url = await privatemoviez(url)
-        time_taken = get_readable_time(time.time() - start)
-        LOGGER(__name__).info(f" Destination : {cmd} - {link_type} - {des_url}")
-        b = f"<b>Telegraph URL(with Result):\n</b> {des_url}\n\n<i>Time Taken : {time_taken}</i>"
-        await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
-    elif "pahe." in url:
-        link_type = "Pahe"
-        a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
-        await msg.edit(text=a)
-        des_url = await pahe(url)
         time_taken = get_readable_time(time.time() - start)
         LOGGER(__name__).info(f" Destination : {cmd} - {link_type} - {des_url}")
         b = f"<b>Telegraph URL(with Result):\n</b> {des_url}\n\n<i>Time Taken : {time_taken}</i>"

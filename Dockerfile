@@ -1,9 +1,7 @@
-FROM missemily22/multifbot:latest
+FROM python:3.9-slim-bullseye
 
 WORKDIR /usr/src/app
-SHELL ["/bin/bash", "-c"]
 RUN chmod 777 /usr/src/app
-
 
 COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt

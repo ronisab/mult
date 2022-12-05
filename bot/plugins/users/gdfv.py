@@ -89,7 +89,6 @@ async def gd(client, message: Message):
     LOGGER(__name__).info(f" Received : {cmd} - {url}")
     sleep(1)
     is_gdtot = is_gdtot_link(url)
-    is_drivehubs = is_drivehubs_link(url)
     is_unified = is_unified_link(url)
     is_udrive = is_udrive_link(url)
     is_sharer = is_sharer_link(url)
@@ -99,16 +98,6 @@ async def gd(client, message: Message):
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b>‌ :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
         await msg.edit(text=a)
         res = await gdtot(url)
-        sleep(1)
-        time_taken = get_readable_time(time() - start)
-        LOGGER(__name__).info(f" Destination : {cmd} - {res}")
-        b = f"<b>Direct Gdrive Link :\n</b>{res}\n\n<i>Time Taken : {time_taken}</i>"
-        await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
-    elif is_drivehubs:
-        link_type = "DriveHubs"
-        a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b>‌ :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
-        await msg.edit(text=a)
-        res = await drivehubs(url)
         sleep(1)
         time_taken = get_readable_time(time() - start)
         LOGGER(__name__).info(f" Destination : {cmd} - {res}")
@@ -149,16 +138,6 @@ async def gd(client, message: Message):
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b>‌ :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
         await msg.edit(text=a)
         res = await shareDrive(url)
-        sleep(1)
-        time_taken = get_readable_time(time() - start)
-        LOGGER(__name__).info(f" Destination : {cmd} - {res}")
-        b = f"<b>Direct Gdrive Link :\n</b>{res}\n\n<i>Time Taken : {time_taken}</i>"
-        await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
-    elif "pahe." in url:
-        link_type = "Pahe"
-        a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b>‌ :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
-        await msg.edit(text=a)
-        res = await pahe(url)
         sleep(1)
         time_taken = get_readable_time(time() - start)
         LOGGER(__name__).info(f" Destination : {cmd} - {res}")

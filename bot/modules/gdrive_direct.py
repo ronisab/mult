@@ -251,27 +251,6 @@ async def sharerpw(url: str, forced_login=False) -> str:
         return f"Encountered Error while parsing Link : {err}"
 
 
-async def drivehubs(url: str) -> str:
-    chromedriver_autoinstaller.install()
-
-    os.chmod("/usr/src/app/chromedriver", 755)
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    wd = webdriver.Chrome("/usr/src/app/chromedriver", chrome_options=chrome_options)
-    wd.get(url)
-    wd.find_element(By.XPATH, '//button[@id="fast"]').click()
-    sleep(10)
-    wd.switch_to.window(wd.window_handles[-1])
-    flink = wd.current_url
-    wd.close()
-    if "drive.google.com" in flink:
-        return flink
-    else:
-        return f"ERROR! Maybe Direct Download is not working for this file !\n Retrived URL : {flink}"
-
-
 async def shareDrive(url, directLogin=True):
     if SHAREDRIVE_PHPCKS is None:
         return "ShareDrive Cookie not Found!"
@@ -313,54 +292,3 @@ async def shareDrive(url, directLogin=True):
             return driveUrl
     except Exception as err:
         return f"Encountered Error while parsing Link : {err}"
-
-
-async def pahe(url: str) -> str:
-    chromedriver_autoinstaller.install()
-
-    AGREE_BUTTON = "//*[contains(text(), 'AGREE')]"
-    LINK_TYPE = ["//*[contains(text(), 'GD')]"]
-    GENERATE = "#generater > img"
-    SHOW_LINK = "showlink"
-    CONTINUE = "Continue"
-
-    os.chmod("/usr/src/app/chromedriver", 755)
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location = "/usr/bin/google-chrome"
-    chrome_options.add_argument("--start-maximized")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--headless")
-    wd = webdriver.Chrome("/usr/src/app/chromedriver", chrome_options=chrome_options)
-    wd.get(url)
-    texts = [
-        y for x in [wd.find_elements("xpath", type) for type in LINK_TYPE] for y in x
-    ]
-    texts[1].click()
-    if "intercelestial." not in wd.current_url:
-        wd.close()
-        wd.switch_to(wd.find_all(wd.switch_to.Window())[0])
-        LOGGER(__name__).info("Chrome Pahe: Website Switched!")
-    try:
-        WebDriverWait(wd, 10).until(
-            ec.element_to_be_clickable((By.XPATH, AGREE_BUTTON))
-        ).click()
-    except TimeoutException:
-        LOGGER(__name__).info("Chrome Pahe: Browser Verification Error!")
-        return "Chrome Pahe: Browser Verification Error!"
-    wd.execute_script("document.getElementById('landing').submit();")
-    WebDriverWait(wd, 30).until(
-        ec.element_to_be_clickable((By.CSS_SELECTOR, GENERATE))
-    ).click()
-    WebDriverWait(wd, 45).until(ec.element_to_be_clickable((By.ID, SHOW_LINK))).click()
-    window_after = wd.window_handles[1]
-    wd.switch_to.window(window_after)
-    wd.execute_script("window.scrollTo(0,535.3499755859375)")
-    WebDriverWait(wd, 30).until(ec.element_to_be_clickable((By.LINK_TEXT, CONTINUE)))
-    last = wd.find_element("link text", CONTINUE)
-    sleep(5)
-    wd.execute_script("arguments[0].click();", last)
-    flink = wd.current_url
-    wd.close()
-    gd_url = gdtot(flink)
-    return gd_url

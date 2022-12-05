@@ -498,17 +498,6 @@ async def direct(client, message: Message):
         LOGGER(__name__).info(f" Destination : {cmd} - {res}")
         b = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b><i>Your Direct-Download Link is :\n</i></b>{res}\n\n<i>Time Taken : {time_taken}</i>"
         await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
-    elif "hubcloud." in url:
-        link_type = "HubCloud"
-        LOGGER(__name__).info(f" Received : {cmd} - {link_type} - {url}")
-        a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b>‌ :\n<code>{url}</code>\n<b>Link Type</b> : <i>{link_type}</i>"
-        await msg.edit(text=a)
-        res = await direct_link.hubcloud(url)
-        sleep(1)
-        time_taken = get_readable_time(time() - start)
-        LOGGER(__name__).info(f" Destination : {cmd} - {res}")
-        b = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b><i>Your Direct-Download Link is :\n</i></b>{res}\n\n<i>Time Taken : {time_taken}</i>"
-        await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
     elif "bunkr.is" in url:
         link_type = "Bunkr.is"
         LOGGER(__name__).info(f" Received : {cmd} - {link_type} - {url}")
