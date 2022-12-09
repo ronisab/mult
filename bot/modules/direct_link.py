@@ -4,7 +4,6 @@ import re
 import urllib.parse
 from time import sleep
 
-import chromedriver_autoinstaller
 import cloudscraper
 from bs4 import BeautifulSoup
 from lk21 import Bypass
@@ -369,11 +368,15 @@ async def megaup(url):
         data = [a.strip("' ") for a in data]
         sleep(3)
         idurl = "".join(data[0][i] for i in range(len(data[0]) // 4 - 1, -1, -1))
-        for i in range(int(len(data[0]) / 4 * 3 - 1), int(len(data[0]) / 4 * 2) - 1, -1):
+        for i in range(
+            int(len(data[0]) / 4 * 3 - 1), int(len(data[0]) / 4 * 2) - 1, -1
+        ):
             idurl += data[0][i]
         for i in range(int((len(data[1]) - 3) / 2 + 2), 2, -1):
             idurl += data[1][i]
-            des_url = f"https://download.megaup.net/?idurl={idurl}&idfilename={data[2]}&idfilesize={data[3]}".replace(" ", "%20")
+            des_url = f"https://download.megaup.net/?idurl={idurl}&idfilename={data[2]}&idfilesize={data[3]}".replace(
+                " ", "%20"
+            )
             return des_url
     except BaseException:
         return "Some Error Occurred \nCould not generate dl-link for your URL"
@@ -625,7 +628,9 @@ async def solidfiles(url):
     }
     try:
         pageSource = requests.get(url, headers=headers).text
-        mainOptions = str(re.search(r"viewerOptions\'\,\ (.*?)\)\;", pageSource).group(1))
+        mainOptions = str(
+            re.search(r"viewerOptions\'\,\ (.*?)\)\;", pageSource).group(1)
+        )
         return json.loads(mainOptions)["downloadUrl"]
     except BaseException:
         return "Some Error Occurred \nCould not generate dl-link for your URL"
@@ -743,6 +748,7 @@ async def uploadee(url):
         return sa["href"]
     except BaseException:
         return "Some Error Occurred \nCould not generate dl-link for your URL"
+
 
 async def uppit(url):
     if not url_exists:
@@ -912,7 +918,7 @@ async def zippyshare(url):
     try:
         response = client.get(url)
         if dlbutton := re.search(
-                r'href = "([^"]+)" \+ \(([^)]+)\) \+ "([^"]+)', response.text
+            r'href = "([^"]+)" \+ \(([^)]+)\) \+ "([^"]+)', response.text
         ):
             folder, math_chall, filename = dlbutton.groups()
             math_chall = eval(math_chall)
@@ -936,8 +942,8 @@ async def zippyshare(url):
                     a = math.floor(int(a) // 3)
                 divider = int(re.findall(f"(\d+)%b", sc)[0])
 
-                return re.search(r"(^https://www\d+.zippyshare.com)", response.url).group(
-                    1
-                ) + "".join([file[0], str(a + (divider % int(b))), file[1]])
+                return re.search(
+                    r"(^https://www\d+.zippyshare.com)", response.url
+                ).group(1) + "".join([file[0], str(a + (divider % int(b))), file[1]])
     except BaseException:
         return "Some Error Occurred \nCould not generate dl-link for your URL"

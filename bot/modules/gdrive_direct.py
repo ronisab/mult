@@ -1,12 +1,10 @@
 import base64
-import os
 import re
 from time import sleep
 from urllib.parse import parse_qs, urlparse
 
-import chromedriver_autoinstaller
 from lxml import etree
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Playwright, expect, sync_playwright
 
 from bot.config import *
 
@@ -246,7 +244,7 @@ async def sharerpw(url: str, forced_login=False) -> str:
         return f"Encountered Error while parsing Link : {err}"
 
 
-async def filep_prun(playwright: Playwright, url:str) -> str:
+async def filep_prun(playwright: Playwright, url: str) -> str:
     browser = playwright.chromium.launch()
     context = browser.new_context()
     page = context.new_page()
@@ -262,7 +260,7 @@ async def filep_prun(playwright: Playwright, url:str) -> str:
     flink = page.url
     context.close()
     browser.close()
-    if 'drive.google.com' in flink:
+    if "drive.google.com" in flink:
         return flink
     else:
         return f"ERROR! Maybe Direct Download is not working for this file !\n Retrived URL : {flink}"
