@@ -648,7 +648,7 @@ async def direct(client, message: Message):
         return
 
     if (DATABASE_URL and res) is not None and (
-            "Some Error Occurred" or "Could not" or "Error" or "error"
+        "Some Error Occurred" or "Could not" or "Error" or "error"
     ) not in str(res.text()):
         if not await DatabaseHelper().is_dblink_exist(url):
             await DatabaseHelper().add_new_dblink(url, res)
