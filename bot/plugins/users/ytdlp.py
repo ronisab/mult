@@ -20,7 +20,7 @@ commands = ["ytdl", f"ytdl@{BOT_USERNAME}", "ytdlp", f"ytdlp@{BOT_USERNAME}"]
 
 @Client.on_message(filters.command(commands, **prefixes))
 @user_commands
-async def magnet(client, message: Message):
+async def ytdlp(client, message: Message):
     """
     Extract DL Links using YT-DLP
     """
@@ -90,15 +90,18 @@ async def magnet(client, message: Message):
     abc = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>YT-DLP Scraping</i>"
     await message.reply_text(text=abc, disable_web_page_preview=True, quote=True)
 
-    yt_info = yt_dlp.YoutubeDL({"quiet": True, "no_warnings": True}).extract_info(
-        url, download=False
-    )
-    res = f"<b>Title:</b> <i>{yt_info['title']}</i><br>"
-    res += "<b><i>DL Links:</i></b><br>"
-    formats = yt_info.get("requested_formats") or [yt_info]
-    for f in formats:
-        res += f"• <code>{f['url']}</code><br>"
-    tlg_url = telegraph_paste(res)
+    try:
+        yt_info = yt_dlp.YoutubeDL({"quiet": True, "no_warnings": True}).extract_info(
+            url, download=False
+        )
+        res = f"<b>Title:</b> <i>{yt_info['title']}</i><br>"
+        res += "<b><i>DL Links:</i></b><br>"
+        formats = yt_info.get("requested_formats") or [yt_info]
+        for f in formats:
+            res += f"• <code>{f['url']}</code><br>"
+        tlg_url = await telegraph_paste(res)
+    except Exception as e:
+        tlg_url = f"YT-DLP Engine could not process your URL!\nERROR: {e}"
 
     time_taken = get_readable_time(time() - start)
     LOGGER(__name__).info(f" Destination : {cmd} - {tlg_url}")
