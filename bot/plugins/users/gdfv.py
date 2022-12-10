@@ -94,7 +94,6 @@ async def gd(client, message: Message):
     is_udrive = is_udrive_link(url)
     is_sharer = is_sharer_link(url)
     is_sharedrive = is_sharedrive_link(url)
-    is_filepress = is_filepress_link(url)
     if is_gdtot:
         link_type = "GDTot"
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
@@ -109,11 +108,12 @@ async def gd(client, message: Message):
         link_type = "AppDrive LookAlike"
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
         await msg.edit(text=a)
-        res = await unified(url)
+        """ res = await unified(url)
         sleep(1)
         time_taken = get_readable_time(time() - start)
         LOGGER(__name__).info(f" Destination : {cmd} - {res}")
-        b = f"<b>Direct Gdrive Link :\n</b>{res}\n\n<i>Time Taken : {time_taken}</i>"
+        b = f"<b>Direct Gdrive Link :\n</b>{res}\n\n<i>Time Taken : {time_taken}</i>" """
+        b = f"<b><i>AppDrive and ts lookalikes have implemented Captchas.\nSo it wont work for now</i></b>"
         await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
     elif is_udrive:
         link_type = "HubDrive LookAlike"
@@ -140,16 +140,6 @@ async def gd(client, message: Message):
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
         await msg.edit(text=a)
         res = await shareDrive(url)
-        sleep(1)
-        time_taken = get_readable_time(time() - start)
-        LOGGER(__name__).info(f" Destination : {cmd} - {res}")
-        b = f"<b>Direct Gdrive Link :\n</b>{res}\n\n<i>Time Taken : {time_taken}</i>"
-        await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
-    elif is_filepress:
-        link_type = "FilePress"
-        a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n\n<b>Link Type</b> : <i>{link_type}</i>"
-        await msg.edit(text=a)
-        res = await filepress(url)
         sleep(1)
         time_taken = get_readable_time(time() - start)
         LOGGER(__name__).info(f" Destination : {cmd} - {res}")

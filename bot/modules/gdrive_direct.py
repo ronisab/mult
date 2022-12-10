@@ -1,10 +1,8 @@
 import base64
 import re
-from time import sleep
 from urllib.parse import parse_qs, urlparse
 
 from lxml import etree
-from playwright.sync_api import Playwright, expect, sync_playwright
 
 from bot.config import *
 
@@ -242,34 +240,6 @@ async def sharerpw(url: str, forced_login=False) -> str:
         return info_parsed["gdrive_link"]
     except Exception as err:
         return f"Encountered Error while parsing Link : {err}"
-
-
-async def filep_prun(playwright: Playwright, url: str) -> str:
-    browser = playwright.chromium.launch()
-    context = browser.new_context()
-    page = context.new_page()
-    page.goto(url)
-    firstbtn = page.locator("xpath=//div[text()='Direct Download']/parent::button")
-    expect(firstbtn).to_be_visible()
-    firstbtn.click()
-    sleep(10)
-    secondBtn = page.get_by_role("button", name="Download Now")
-    expect(secondBtn).to_be_visible()
-    with page.expect_navigation():
-        secondBtn.click()
-    flink = page.url
-    context.close()
-    browser.close()
-    if "drive.google.com" in flink:
-        return flink
-    else:
-        return f"ERROR! Maybe Direct Download is not working for this file !\n Retrived URL : {flink}"
-
-
-async def filepress(url: str) -> str:
-    with sync_playwright() as playwright:
-        flink = await filep_prun(playwright, url)
-        return flink
 
 
 async def shareDrive(url, directLogin=True):
