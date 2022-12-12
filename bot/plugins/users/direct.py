@@ -15,7 +15,6 @@ from bot.modules.lists import *
 from bot.modules.pasting import telegraph_paste
 from bot.modules.regex import *
 
-prefixes = COMMAND_PREFIXES
 commands = ["direct", f"direct@{BOT_USERNAME}"]
 
 
@@ -107,7 +106,7 @@ async def direct(client, message: Message):
             b = f"<b>Download Link :\n</b>{result}\n\n<i>Time Taken : {time_taken}</i>\n<i>Result Added on:</i>{add_date}"
             await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
             try:
-                logmsg = f"<b><i>User:</i></b> {user_}\n<b><i>User ID:</i></b><code>{user_id}</code>\n<i>User URL:</i> {url}\n<i>Command:</i> {cmd}\n<i>Destination URL:</i> {result}\n\n<b><i>Time Taken:</i></b> {time_taken}\n\n<i>Result Added on:</i>{add_date}"
+                logmsg = f"<b><i>User:</i></b> {user_}\n<b><i>User ID:</i></b><code>{user_id}</code>\n<i>User URL:</i> {url}\n<i>Command:</i> {cmd}\n<i>Destination URL:</i> {result}\n\n<b><i>Time Taken:</i></b> {time_taken}\n\n<i>Result Added on:</i> {add_date}"
                 await client.send_message(
                     chat_id=LOG_CHANNEL,
                     text=logmsg,
@@ -131,7 +130,7 @@ async def direct(client, message: Message):
         LOGGER(__name__).info(f" Destination : {cmd} - {res}")
         b = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b><i>Your Direct-Download Link is :\n</i></b>{res}\n\n<i>Time Taken : {time_taken}</i>"
         await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
-    elif "mdisk." in url:
+    elif "mdisk.me" in url:
         link_type = "MDisk"
         LOGGER(__name__).info(f" Received : {cmd} - {link_type} - {url}")
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n<b>Link Type</b> : <i>{link_type}</i>"

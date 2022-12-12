@@ -1,11 +1,10 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from bot.config import BOT_USERNAME, COMMAND_PREFIXES, DATABASE_URL
+from bot.config import BOT_USERNAME, DATABASE_URL, prefixes
 from bot.helpers.database import DatabaseHelper
 from bot.helpers.decorators import sudo_commands
 
-prefixes = COMMAND_PREFIXES
 cmds = ["db", f"db@{BOT_USERNAME}"]
 
 
@@ -22,10 +21,10 @@ async def all_users(_, message: Message):
             con_stats = True
         else:
             con_stats = False
-        msg = f"<b>DataBase URL:</b>\n <code>{DATABASE_URL}</code>"
+        msg = f"<b>DataBase URL:</b> <code>{DATABASE_URL}</code>"
         msg += f"\n\n<b>Connection Status:</b> <code>{con_stats}</code>"
         msg += f"\n\n<b><i>No of Links Stored: </i></b>{total_links}"
-        msg += f"\n<b><i>Total Bot Users: </i></b>{total_users}"
+        msg += f"\n\n<b><i>Total Bot Users: </i></b>{total_users}"
         await message.reply_text(text=msg, disable_web_page_preview=True, quote=True)
     else:
         err = "You have not provided a DB URL, so this function wont work!"

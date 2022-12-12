@@ -13,7 +13,6 @@ from bot.logging import LOGGER
 from bot.modules import bypasser
 from bot.modules.regex import URL_REGEX, is_a_url
 
-prefixes = COMMAND_PREFIXES
 commands = ["multi", f"multi@{BOT_USERNAME}"]
 
 
@@ -90,6 +89,7 @@ async def multi(client, message: Message):
     LOGGER(__name__).info(f" Destination : {cmd} - {res}")
     xyz = f"<b>Bypassed Result :\n</b>{res}\n\n<i>Time Taken : {time_taken}</i>"
     await message.reply_text(text=xyz, disable_web_page_preview=True, quote=True)
+
     try:
         logmsg = f"<b><i>User:</i></b> {user_}\n<b><i>User ID: </i></b><code>{user_id}</code>\n<i>User URL:</i> {url}\n<i>Command:</i> {cmd}\n<i>Destination URL:</i> {res}\n\n<b><i>Time Taken:</i></b> {time_taken}"
         await client.send_message(

@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+from asyncio import get_event_loop, new_event_loop, set_event_loop
 
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
@@ -14,6 +15,12 @@ plugins = dict(root="bot/plugins")
 if os.path.exists("logs.txt"):
     with open("logs.txt", "r+") as f:
         f.truncate(0)
+
+try:
+    loop = get_event_loop()
+except RuntimeError:
+    set_event_loop(new_event_loop())
+    loop = get_event_loop()
 
 
 if sys.version_info[0] < 3 or sys.version_info[1] < 7:
@@ -38,12 +45,14 @@ ________________________________________________________________________________
 """
 # https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Multi%20Function%20Bot
 
-un = f"@{BOT_USERNAME}"
 
-LOGGER(__name__).info(BANNER)
 LOGGER(__name__).info("Installing Bot Requirements...")
 os.system("pip3 install --no-cache-dir -r requirements.txt --upgrade")
-LOGGER(__name__).info(f"Pyrogram v{__version__} (Layer {layer}) started on {un}.")
+LOGGER(__name__).info("Initiating the Client!")
+LOGGER(__name__).info(BANNER)
+LOGGER(__name__).info(
+    f"Pyrogram v{__version__} (Layer {layer}) started on {f'@{BOT_USERNAME}'}."
+)
 LOGGER(__name__).info("Telegram Bot Started.")
 
 bot = Client(

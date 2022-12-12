@@ -34,6 +34,7 @@
 - `UPTOBOX_TOKEN` Put your UptoBox Account Token (Free Account works too!)
 - `EMILY_API_URL` Your [Emily API](https://github.com/missemily22/EmilyAPI) instance Urls. Separate API URLs by space
 - `UPSTREAM_REPO` Add the Upstream Repo of your Bot for automatic updation
+- `UPSTREAM_BRANCH` Select the Upstream Branch of your Bot for automatic updation
 ---
 
 <b>NOTE: Fill the above values in <code>config.env</code> or use them as Environment Variables. </b><br>
@@ -42,11 +43,8 @@
 ```
 start - Bot Start Message
 help - Alias command for start
-image2pdf - Convert Image to PDF
-rename - Rename a File in Telegram
-tgupload - Upload a File to Telegram
-takess - Take ScreenShot of a Webpage
-wayback: Generate WayBack of a Webpage
+pdfdrive - Get Results from PDFDrive
+dalle - Generate images from a text prompt using DALLE-Mini
 bifm - Bypass Short Links using BIFM API
 direct - Get Direct Link for various Supported URLs
 bypass - Bypass Various Supported Shortened URLs
@@ -55,7 +53,13 @@ shorten - Get AdFree Shortened URLs of your Link
 magnet - Extract Magnet from Torrent Websites
 index - Extract Direct Links from Bhadoo Index Folder URLs
 scrape - Extract Direct Links from Supported Sites
+ytdl - (or /ytdlp) Extract DL Links using YT-DLP
 gd - (or use /clone) Get GDrive Links for various Drive File Sharer
+image2pdf - Convert Image to PDF
+rename - Rename a File in Telegram
+tgupload - Upload a File to Telegram
+takess - Take ScreenShot of a Webpage
+wayback - Generate WayBack of a Webpage
 ```
 
 <details>
@@ -66,12 +70,7 @@ gd - (or use /clone) Get GDrive Links for various Drive File Sharer
 	<i><b>Users Commands </b></i><br><br>
 	/start - To get the start message.<br>
 	/help - Alias command for start. <br>
-    /image2pdf - Convert Image to PDF <br>
-    /rename - Rename a File in Telegram <br>
-    /tgupload - Upload a File to Telegram <br>
-    /takess - Take ScreenShot of a Webpage <br>
-    /wayback: Generate WayBack of a Webpage <br>
-	/ping - Ping the telegram api server.<br>
+    /dalle - Generate images from a text prompt using DALLE-Mini <br>
     /bifm - Bypass Short Links using BIFM API <br>
     /direct - Get Direct Link for various Supported URLs <br>
     /bypass - Bypass Various Supported Shortened URLs <br>
@@ -82,6 +81,14 @@ gd - (or use /clone) Get GDrive Links for various Drive File Sharer
     /scrape - Extract Direct Links from Supported Sites <br>
     /ytdl - (or /ytdlp) Extract DL Links using YT-DLP <br>
     /gd - (or use /clone) Get GDrive Links for various Drive File Sharer <br>
+    /image2pdf - Convert Image to PDF <br>
+    /rename - Rename a File in Telegram <br>
+    /tgupload - Upload a File to Telegram <br>
+    /takess - Take ScreenShot of a Webpage <br>
+    /wayback - Generate WayBack of a Webpage <br>
+    /pdfdrive - Get Results from PDFDrive <br>
+    /paste - Paste the text/document to KatBin <br>
+	/ping - Ping the telegram api server <br>
 	</li>
 <br>
     <li>
@@ -91,6 +98,7 @@ gd - (or use /clone) Get GDrive Links for various Drive File Sharer
     /serverstats: Get the stats of server.<br>
     /stats: Alias command for serverstats.<br>
     /users - Get details about the Bot Users <br>
+    /inspect - Inspect the message and give reply in json format <br>
     </li>
 <br>
     <li>
@@ -98,9 +106,9 @@ gd - (or use /clone) Get GDrive Links for various Drive File Sharer
 	/addsudo - Add a user to the Bot sudo users list <br>
     /removesudo - Remove a user to the Bot sudo users list <br>
     /broadcast - Broadcast a message to all the Bot Users <br>
-    /shell: To run the terminal commands via bot <br>
-    /exec: (or use /py) To run the python commands via bot <br>
-    /update: To update the bot to latest commit from UpStream Repositorys. <br> 
+    /shell: To run the terminal commands via bot.<br>
+    /exec: (or use /py) To run the python commands via bot. <br>
+    /update: To update the bot to latest commit from UpStream Repository. <br> 
     /restart: Restart the bot. <br>
     /log: To get the log file of bot. <br>
 </ul>
@@ -135,6 +143,19 @@ gd - (or use /clone) Get GDrive Links for various Drive File Sharer
 - Click on the Button below to deploy this Bot to Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/missemily22/MultiFunctionBot)
+
+
+<a name="deploy-to-koyeb"></a>
+
+<h2> <b><img src="https://user-images.githubusercontent.com/87380104/205833766-633843a2-d802-4c72-8732-70d826d5c144.png" height="20" width="20">  Deploy on Koyeb</b> </h2>
+
+<b>Run program totally for free on Koyeb with single click deployment button!</b>
+#### **1. Click the following one-click deployment button:**
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/apps/deploy?type=docker&image=ghcr.io/missemily22/multifunctionbot:lite&name=mfbot&ports=8080;http;/&env[CONFIG_ENV_URL]=Put-your-Config-File-URL-so-that-it-works-as-Bot-Config)
+#### **2. Fill the Config File variable with a direct link to your config and click `Deploy`.**
+#### **3. While deployment, you can choose `Micro` instance type since it requires 512 RAM.**
+![image](https://user-images.githubusercontent.com/87380104/205841570-6a43c020-eecf-4574-8c53-41f9454b5d79.png)
+#### **⛔NOTE: This method uses ready-to-use Docker Image made specially for Koyeb, hence any change requires building of new image with `Flask` to listen on port `8080`.**
 
 
 <!---Docker--->
