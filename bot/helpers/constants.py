@@ -59,8 +59,6 @@ USER_TEXT = """🗒️ Documentation for commands available to user's
 
 • /wayback - Generate WayBack of a Webpage
 
-• /pdfdrive - Get Results from PDFDrive
-
 • /paste: Paste the text/document to KatBin
 """
 

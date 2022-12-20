@@ -43,7 +43,6 @@
 ```
 start - Bot Start Message
 help - Alias command for start
-pdfdrive - Get Results from PDFDrive
 dalle - Generate images from a text prompt using DALLE-Mini
 bifm - Bypass Short Links using BIFM API
 direct - Get Direct Link for various Supported URLs
@@ -86,7 +85,6 @@ wayback - Generate WayBack of a Webpage
     /tgupload - Upload a File to Telegram <br>
     /takess - Take ScreenShot of a Webpage <br>
     /wayback - Generate WayBack of a Webpage <br>
-    /pdfdrive - Get Results from PDFDrive <br>
     /paste - Paste the text/document to KatBin <br>
 	/ping - Ping the telegram api server <br>
 	</li>

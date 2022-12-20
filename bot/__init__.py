@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-from asyncio import get_event_loop, new_event_loop, set_event_loop
 
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
@@ -15,13 +14,6 @@ plugins = dict(root="bot/plugins")
 if os.path.exists("logs.txt"):
     with open("logs.txt", "r+") as f:
         f.truncate(0)
-
-try:
-    loop = get_event_loop()
-except RuntimeError:
-    set_event_loop(new_event_loop())
-    loop = get_event_loop()
-
 
 if sys.version_info[0] < 3 or sys.version_info[1] < 7:
     VERSION_ASCII = """

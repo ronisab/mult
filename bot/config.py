@@ -78,14 +78,14 @@ else:
     LOG_CHANNEL = int(LOG_CHANNEL)
 
 FORCESUB_ENABLE = environ.get("FORCESUB_ENABLE")
-if FORCESUB_ENABLE is (False or None):
+if FORCESUB_ENABLE is (False or None or ""):
     FORCESUB_ENABLE = False
     LOGGER(__name__).warning("ForceSub is Disabled!")
 
 FORCESUB_CHANNEL = environ.get("FORCESUB_CHANNEL", "")
 if len(FORCESUB_CHANNEL) == 0:
     LOGGER(__name__).warning("FORCESUB_CHANNEL not provided!")
-    FORCESUB_CHANNEL = "-100"
+    FORCESUB_CHANNEL = None
 elif not FORCESUB_CHANNEL.startswith("-"):
     FORCESUB_CHANNEL = int(f"-{FORCESUB_CHANNEL}")
 else:
