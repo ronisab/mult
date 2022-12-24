@@ -14,8 +14,8 @@ from bot.modules.regex import is_sendcm_folder_link
 
 
 async def androiddatahost(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         c = BeautifulSoup(requests.get(url).content, "html.parser")
         fin = c.find("div", {"download2"})
@@ -26,8 +26,8 @@ async def androiddatahost(url):
 
 
 async def anonfiles(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
         if dlurl := soup.find(id="download-url"):
@@ -37,8 +37,8 @@ async def anonfiles(url):
 
 
 async def antfiles(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
         parsed_url = urllib.parse.urlparse(url)
@@ -50,8 +50,8 @@ async def antfiles(url):
 
 
 async def artstation(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     url = url.split("/")[-1]
     client = cloudscraper.create_scraper(interpreter="nodejs", allow_brotli=False)
     h = {
@@ -69,8 +69,8 @@ async def artstation(url):
 
 
 async def bunkr_cyber(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     count = 1
     dl_msg = ""
     resp = requests.get(url)
@@ -105,8 +105,8 @@ async def bunkr_cyber(url):
 
 
 async def dropbox(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     if "dropbox.com/s/" in url:
         return url.replace("dropbox.com", "dl.dropboxusercontent.com")
     else:
@@ -114,8 +114,8 @@ async def dropbox(url):
 
 
 async def fembed(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         url = url[:-1] if url[-1] == "/" else url
         TOKEN = url.split("/")[-1]
@@ -128,8 +128,8 @@ async def fembed(url):
 
 
 async def fichier(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     req = requests.post(url)
     if req.status_code == 404:
         return "File not found/The link you entered is wrong!"
@@ -171,8 +171,8 @@ async def fichier(url):
 
 
 async def filesIm(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         return Bypass().bypass_filesIm(url)
     except BaseException:
@@ -180,8 +180,8 @@ async def filesIm(url):
 
 
 async def gdbot(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     client = cloudscraper.create_scraper(allow_brotli=False)
     try:
         resp = client.get(url)
@@ -198,8 +198,8 @@ async def gdbot(url):
 
 
 async def github(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         download = requests.get(url, stream=True, allow_redirects=False)
         return download.headers["location"]
@@ -208,8 +208,8 @@ async def github(url):
 
 
 async def gofile(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     api_uri = "https://api.gofile.io"
     client = cloudscraper.create_scraper(allow_brotli=False)
     try:
@@ -231,8 +231,8 @@ async def gofile(url):
 
 
 async def hxfile(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     url = url[:-1] if url[-1] == "/" else url
     token = url.split("/")[-1]
     client = requests.Session()
@@ -260,8 +260,8 @@ async def hxfile(url):
 
 
 async def krakenfiles(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     client = requests.session()
     try:
         resp = client.get(url)
@@ -291,8 +291,8 @@ async def krakenfiles(url):
 
 
 async def letsupload(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         return Bypass().bypass_url(url)
     except BaseException:
@@ -300,8 +300,8 @@ async def letsupload(url):
 
 
 async def linkpoi(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         return Bypass().bypass_linkpoi(url)
     except BaseException:
@@ -309,8 +309,8 @@ async def linkpoi(url):
 
 
 async def mdisk(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     token = url.split("/")[-1]
     client = cloudscraper.create_scraper(interpreter="nodejs", allow_brotli=False)
     h = {
@@ -326,8 +326,8 @@ async def mdisk(url):
 
 
 async def mdisk_mpd(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     token = url.split("/")[-1]
     client = cloudscraper.create_scraper(interpreter="nodejs", allow_brotli=False)
     h = {
@@ -343,8 +343,8 @@ async def mdisk_mpd(url):
 
 
 async def mediafire(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         page = BeautifulSoup(requests.get(url).content, "lxml")
         info = page.find("a", {"aria-label": "Download file"})
@@ -355,8 +355,8 @@ async def mediafire(url):
 
 
 async def megaup(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     client = cloudscraper.create_scraper(allow_brotli=False)
     try:
         resp = client.get(url)
@@ -383,8 +383,8 @@ async def megaup(url):
 
 
 async def mirrored(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     res_msg = None
     client = cloudscraper.create_scraper(interpreter="javascript", allow_brotli=False)
     url = url + "/" if url[-1] != "/" else url
@@ -411,8 +411,8 @@ async def mirrored(url):
 
 
 async def mp4upload(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     url = url[:-1] if url[-1] == "/" else url
     headers = {"referer": "https://mp4upload.com"}
     token = url.split("/")[-1]
@@ -433,8 +433,8 @@ async def mp4upload(url):
 
 
 async def osdn(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     link = re.findall(r"\bhttps?://.*osdn\.net\S+", url)[0]
     try:
         page = BeautifulSoup(requests.get(link, allow_redirects=True).content, "lxml")
@@ -451,8 +451,8 @@ async def osdn(url):
 
 
 async def pandafile(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     id_p = re.compile("pandafiles.com/(.+?)/")
     headers = {
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:93.0) Gecko/20100101 Firefox/93.0",
@@ -491,8 +491,8 @@ async def pandafile(url):
 
 
 async def pixeldrain(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     url = url.strip("/ ")
     file_id = url.split("/")[-1]
     if url.split("/")[-2] == "l":
@@ -505,8 +505,8 @@ async def pixeldrain(url):
 
 
 async def pixl(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
 
     resp = requests.get(url)
     if resp.status_code == 404:
@@ -541,8 +541,8 @@ async def pixl(url):
 
 
 async def sbembed(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     dl_url = None
     try:
         f_url = Bypass().bypass_sbembed(url)
@@ -555,8 +555,8 @@ async def sbembed(url):
 
 
 async def sendcm(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
 
     res = requests.get(url)
     if res.status_code == 404:
@@ -621,8 +621,8 @@ async def sendcm(url):
 
 
 async def solidfiles(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"
     }
@@ -637,8 +637,8 @@ async def solidfiles(url):
 
 
 async def sfile(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     headers = {
         "User-Agent": "Mozilla/5.0 (Linux; Android 8.0.1; SM-G532G Build/MMB29T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3239.83 Mobile Safari/537.36"
     }
@@ -651,8 +651,8 @@ async def sfile(url):
 
 
 async def sourceforge(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     link = re.findall(r"\bhttps?://sourceforge\.net\S+", url)[0]
     file_path = re.findall(r"files(.*)/download", link)[0]
     project = re.findall(r"projects?/(.*?)/files", link)[0]
@@ -674,8 +674,8 @@ async def sourceforge2(url):
 
 
 async def streamlare(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     CONTENT_ID = re.compile(r"/[ve]/([^?#&/]+)")
     API_LINK = "https://sltube.org/api/video/download/get"
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4136.7 Safari/537.36"
@@ -703,8 +703,8 @@ async def streamlare(url):
 
 
 async def streamtape(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         response = requests.get(url)
         if videolink := re.findall(r"document.*((?=id\=)[^\"']+)", response.text):
@@ -715,8 +715,8 @@ async def streamtape(url):
 
 
 async def uploadbaz(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     url = url[:-1] if url[-1] == "/" else url
     token = url.split("/")[-1]
     client = requests.Session()
@@ -740,8 +740,8 @@ async def uploadbaz(url):
 
 
 async def uploadee(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         soup = BeautifulSoup(requests.get(url).content, "lxml")
         sa = soup.find("a", attrs={"id": "d_l"})
@@ -751,8 +751,8 @@ async def uploadee(url):
 
 
 async def uppit(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     url = url[:-1] if url[-1] == "/" else url
     token = url.split("/")[-1]
     client = requests.Session()
@@ -780,8 +780,8 @@ async def uppit(url):
 
 
 async def userscloud(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     url = url[:-1] if url[-1] == "/" else url
     token = url.split("/")[-1]
     client = requests.Session()
@@ -805,8 +805,8 @@ async def userscloud(url):
 
 
 async def uptobox(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
 
     if UPTOBOX_TOKEN is None:
         LOGGER(__name__).info("UPTOBOX Error: Token not Provided!")
@@ -857,8 +857,8 @@ async def uptobox(url):
 
 
 async def uservideo(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         return Bypass().bypass_uservideo(url)
     except BaseException:
@@ -866,8 +866,8 @@ async def uservideo(url):
 
 
 async def wetransfer(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     try:
         if url.startswith("https://we.tl/"):
             r = requests.head(url, allow_redirects=True)
@@ -901,8 +901,8 @@ async def wetransfer(url):
 
 
 async def yandex_disk(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     api = "https://cloud-api.yandex.net/v1/disk/public/resources/download?public_key={}"
     try:
         dl_url = requests.get(api.format(url)).json()["href"].replace(" ", "%20")
@@ -912,8 +912,8 @@ async def yandex_disk(url):
 
 
 async def zippyshare(url):
-    if not url_exists:
-        return "The link you entered is wrong!"
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
     client = requests.Session()
     try:
         response = client.get(url)
