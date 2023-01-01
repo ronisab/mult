@@ -314,5 +314,5 @@ DB_SAVE_PREVENTION = [
     "Sendcm File",
     "HTPMovies DL",
     "PrivateMoviez DL",
-    "Script Generic"
+    "Script Generic",
 ]
