@@ -1,6 +1,7 @@
 aiofiles
 beautifulsoup4
 bs4
+cachetools
 cloudscraper
 colorama
 dnspython
@@ -13,6 +14,7 @@ lxml
 psutil
 PyBypass
 pymongo
+pyrate_limiter
 pyrogram
 python-dotenv
 python-telegram-bot
