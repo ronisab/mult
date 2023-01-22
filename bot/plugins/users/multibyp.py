@@ -106,6 +106,7 @@ async def multi(client, message: Message):
 
 @Client.on_message(filters.command(commands2, **prefixes))
 @user_commands
+@ratelimit
 async def multi(client, message: Message):
     """
     Bypass Short Links using Bypass.vip API
