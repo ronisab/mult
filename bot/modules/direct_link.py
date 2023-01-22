@@ -6,7 +6,6 @@ import urllib.parse
 from http.cookiejar import MozillaCookieJar
 from time import sleep
 
-import chromedriver_autoinstaller
 import cloudscraper
 import httpx
 from bs4 import BeautifulSoup
