@@ -175,7 +175,7 @@ wayback - Generate WayBack of a Webpage
 ## ⚛️ Deploying on Heroku
 - Click on the Button below to deploy this Bot to Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/missemily22/MultiFunctionBot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/KR-BOTZ/MultiFunctionBot)
 
 
 <a name="deploy-to-koyeb"></a>
