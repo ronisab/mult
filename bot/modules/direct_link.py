@@ -873,6 +873,68 @@ async def terabox(url) -> str:
         return "Could not Generate Direct Link for your TeraBox Link :("
 
 
+async def mirrobox(url) -> str:
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
+
+    if not os.path.isfile("terabox_cookies.txt"):
+        LOGGER(__name__).info("TeraBox Error: Cookies not Provided!")
+        return "TeraBox Cookies not Provided!"
+    dl_links = ""
+    try:
+        client = requests.Session()
+        res = client.request("GET", url)
+        key = res.url.split("?surl=")[-1]
+        jar = MozillaCookieJar("terabox_cookies.txt")
+        jar.load()
+        client.cookies.update(jar)
+        res = client.request(
+            "GET",
+            f"https://www.mirrobox.com/share/list?app_id=250528&shorturl={key}&root=1",
+        )
+        results = res.json()["list"]
+        for result in results:
+            if result["isdir"] != "0":
+                dl_links += result["dlink"]
+    except Exception as e:
+        return f"ERROR: {e.__class__.__name__}"
+    if dl_links != "":
+        return dl_links
+    else:
+        return "Could not Generate Direct Link for your TeraBox Link :("
+    
+    
+async def 4funbox(url) -> str:
+    if not url_exists(url):
+        return "Bot could not connect to the URL!"
+
+    if not os.path.isfile("terabox_cookies.txt"):
+        LOGGER(__name__).info("TeraBox Error: Cookies not Provided!")
+        return "TeraBox Cookies not Provided!"
+    dl_links = ""
+    try:
+        client = requests.Session()
+        res = client.request("GET", url)
+        key = res.url.split("?surl=")[-1]
+        jar = MozillaCookieJar("terabox_cookies.txt")
+        jar.load()
+        client.cookies.update(jar)
+        res = client.request(
+            "GET",
+            f"https://www.4funbox.com/share/list?app_id=250528&shorturl={key}&root=1",
+        )
+        results = res.json()["list"]
+        for result in results:
+            if result["isdir"] != "0":
+                dl_links += result["dlink"]
+    except Exception as e:
+        return f"ERROR: {e.__class__.__name__}"
+    if dl_links != "":
+        return dl_links
+    else:
+        return "Could not Generate Direct Link for your TeraBox Link :("
+    
+    
 async def uploadbaz(url):
     if not url_exists(url):
         return "Bot could not connect to the URL!"
