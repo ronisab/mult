@@ -1,0 +1,10 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+www.4funbox.com	FALSE	/	FALSE	0	csrfToken	mHVejtsG5V_KnlL1fTPuA6Qn
+.4funbox.com	TRUE	/	FALSE	1681139782	browserid	VPjxS5kLJJ9sF0bYTyZx92oaJG1paC3YZ5lRcmpFz28f0t6SFBv8glEZCdA=
+www.4funbox.com	FALSE	/	FALSE	1678550873	lang	en
+.4funbox.com	TRUE	/	FALSE	1707491782	TSID	nUIcm0rYXE5OSQy73xyIaxG9FaFYANg6
+.4funbox.com	TRUE	/	FALSE	1710518875	__bid_n	18636bfcbf953c52954207
+www.4funbox.com	FALSE	/	FALSE	1678550874	ndut_fmt	D1610C9961751DC5684FACA39B086D893D1987DBA65DE7DF4B3A85375C8447C7
