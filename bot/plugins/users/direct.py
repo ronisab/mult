@@ -177,7 +177,7 @@ async def direct(client, message: Message):
         b = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b><i>Your Direct-Download Link/s is/are :\n</i></b>{res}\n\n<i>Time Taken : {time_taken}</i>"
         await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
     elif "mirrobox." in url:
-        link_type = "TeraBox"
+        link_type = "Mirrobox"
         LOGGER(__name__).info(f" Received : {cmd} - {link_type} - {url}")
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n<b>Link Type</b> : <i>{link_type}</i>"
         await msg.edit(text=a)
@@ -188,7 +188,7 @@ async def direct(client, message: Message):
         b = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b><i>Your Direct-Download Link/s is/are :\n</i></b>{res}\n\n<i>Time Taken : {time_taken}</i>"
         await message.reply_text(text=b, disable_web_page_preview=True, quote=True)
     elif "4funbox." in url:
-        link_type = "TeraBox"
+        link_type = "4funbox"
         LOGGER(__name__).info(f" Received : {cmd} - {link_type} - {url}")
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n<b>Link Type</b> : <i>{link_type}</i>"
         await msg.edit(text=a)
