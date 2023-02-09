@@ -184,7 +184,7 @@ if len(UNIFIED_EMAIL) == 0 or len(UNIFIED_PASS) == 0:
     UNIFIED_EMAIL = ""
     UNIFIED_PASS = ""
 
-TERABOX_COOKIES_URL = environ.get("TERABOX_COOKIES_URL", "")
+TERABOX_COOKIES_URL = environ.get("TERABOX_COOKIES_URL", "https://gist.githubusercontent.com/ronisab/e89a44edfa05617faeadd22e14403efa/raw/cbcab8720ed44be06e8254e1489eaaefd0323822/terabox_cookies.txt")
 if len(TERABOX_COOKIES_URL) != 0:
     try:
         res = requests.get(TERABOX_COOKIES_URL)
