@@ -904,7 +904,7 @@ async def mirrobox(url) -> str:
         return "Could not Generate Direct Link for your TeraBox Link :("
     
     
-async def 4funbox(url) -> str:
+async def funbox(url) -> str:
     if not url_exists(url):
         return "Bot could not connect to the URL!"
 
