@@ -192,7 +192,7 @@ async def direct(client, message: Message):
         LOGGER(__name__).info(f" Received : {cmd} - {link_type} - {url}")
         a = f"<b>Dear</b> {uname} (ID: {uid}),\n\n<b>Bot has received the following link</b> :\n<code>{url}</code>\n<b>Link Type</b> : <i>{link_type}</i>"
         await msg.edit(text=a)
-        res = await direct_link.4funbox(url)
+        res = await direct_link.funbox(url)
 
         time_taken = get_readable_time(time() - start)
         LOGGER(__name__).info(f" Destination : {cmd} - {res}")
